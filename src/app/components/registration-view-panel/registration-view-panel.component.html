@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <h2 class="ml-5 mb-5 color-orange">Регистрация</h2>
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="first-name">Име<span class="text-danger">*</span></label>
+          <input id="first-name" type="text" class="form-control" placeholder="Въведете име" formControlName="firstName"
+                 [ngClass]="{'is-invalid': form.controls.firstName.errors != null, 'is-valid': form.controls.firstName.errors == null}">
+        </div>
+        <div class="form-group">
+          <label for="email">Email<span class="text-danger">*</span></label>
+          <input id="email" type="email" class="form-control" placeholder="Въведете email" formControlName="email"
+                 [ngClass]="{'is-invalid': form.controls.email.errors != null, 'is-valid': form.controls.email.errors == null}">
+        </div>
+        <div class="form-group">
+          <label for="password">Парола<span class="text-danger">*</span></label>
+          <input id="password" type="password" class="form-control" placeholder="Въведете парола" formControlName="password"
+                 [ngClass]="{'is-invalid': form.controls.password.errors != null, 'is-valid': form.controls.password.errors == null}">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="last-name">Фамилия<span class="text-danger">*</span></label>
+          <input id="last-name" type="text" class="form-control" placeholder="Въведете фамилия" formControlName="lastName"
+                 [ngClass]="{'is-invalid': form.controls.lastName.errors != null, 'is-valid': form.controls.lastName.errors == null}">
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="phone">Телефон<span class="text-danger">*</span></label>
+              <input id="phone" type="tel" class="form-control" placeholder="Въведете телефонен номер" formControlName="phone" pattern="08[789][0-9]{7}"
+                     [ngClass]="{'is-invalid': form.controls.phone.errors != null, 'is-valid': form.controls.phone.errors == null}">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="role">Роля<span class="text-danger">*</span></label>
+              <ng-select id="role" [items]="roles" placeholder="Изберете роля" formControlName="role"></ng-select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="re-password">Потвърждаване на паролата<span class="text-danger">*</span></label>
+          <input id="re-password" type="password" class="form-control" placeholder="Въведете парола" formControlName="rePassword"
+                 [ngClass]="{'is-invalid': form.controls.rePassword.errors != null, 'is-valid': form.controls.rePassword.errors == null}">
+        </div>
+      </div>
+    </div>
+    <h6 *ngIf="form.invalid" class="text-danger">Моля, попълнете всички задължителни полета.</h6>
+    <button class="btn my-3 b-color-orange color-white" [disabled]="!form.valid" (click)="onClickRegister()">Регистрирай се</button>
+  </form>
+</div>

@@ -1,0 +1,96 @@
+<div class="container-fluid mt-3 p-4 overflow-auto">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card c1-height">
+        <div class="card-header">
+          <h4 class="color-orange">Описание и меню</h4>
+        </div>
+        <div class="card-body p-3">
+          <div class="form-group">
+            <label for="desc">Описание</label>
+            <textarea [value]="place?.description" class="form-control" id="desc" rows="7"></textarea>
+          </div>
+          <form class="overflow-auto" style="height: calc(100% - 14rem)">
+            <label class="d-block mb-0">Меню</label>
+            <label class="mb-0 mt-2">Храни</label>
+            <div *ngFor="let food of place?.menu.foods" class="form-row mt-1" style="width: 97%">
+              <div class="col-6">
+                <input [value]="food.name" type="text" class="form-control" readonly>
+              </div>
+              <div class="col-5">
+                <input [value]="food.price" type="text" class="form-control d-inline" readonly>
+              </div>
+              <div class="col-1">
+                <button class="btn btn-sm btn-outline-danger" ngbTooltip="Премахни" (click)="removeFood(food.name)">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" width="12" height="16">
+                    <path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="form-row mt-1" style="width: 97%">
+              <div class="col-6">
+                <input #name1 type="text" class="form-control">
+              </div>
+              <div class="col-5">
+                <input #price1 type="text" class="form-control">
+              </div>
+              <div class="col-1">
+                <button class="btn btn-sm btn-outline-success" ngbTooltip="Добави" (click)="addFood(name1.value, price1.value)">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" width="12" height="16">
+                    <path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <label class="mb-0 mt-2">Напитки</label>
+            <div *ngFor="let drink of place?.menu.drinks" class="form-row mt-1" style="width: 97%">
+              <div class="col-6">
+                <input [value]="drink.name" type="text" class="form-control" placeholder="First name" readonly>
+              </div>
+              <div class="col-5">
+                <input [value]="drink.price" type="text" class="form-control" placeholder="Last name" readonly>
+              </div>
+              <div class="col-1">
+                <button class="btn btn-sm btn-outline-danger" ngbTooltip="Премахни" (click)="removeDrink(drink.name)">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" width="12" height="16">
+                    <path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="form-row mt-1" style="width: 97%">
+              <div class="col-6">
+                <input #name2 type="text" class="form-control">
+              </div>
+              <div class="col-5">
+                <input #price2 type="text" class="form-control">
+              </div>
+              <div class="col-1">
+                <button class="btn btn-sm btn-outline-success" ngbTooltip="Добави" (click)="addDrink(name2.value, price2.value)">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" width="12" height="16">
+                    <path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card c1-height">
+        <div class="card-header">
+          <h4 class="color-orange">Събития</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card c1-height">
+        <div class="card-header">
+          <h4 class="color-orange">Заявки за резервация</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
