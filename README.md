@@ -1,1 +1,1 @@
-Projct for the UI course in FMI.
+Project for the UI course in FMI.
