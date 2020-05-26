@@ -68,7 +68,7 @@
             </div>
             <div class="col-lg-6">
               <div class="d-flex justify-content-center">
-                <button class="btn bg-secondary color-white mt-4">Направете резервация</button>
+                <button class="btn bg-secondary color-white mt-4" (click)="reserve()">Заявете резервация</button>
               </div>
             </div>
           </div>
@@ -130,4 +130,7 @@
       </div>
     </div>
   </div>
+</div>
+<div *ngIf="isVisibleToast" class="d-flex justify-content-center">
+  <ngb-toast [delay]="2500" (hide)="isVisibleToast = false" class="b-color-orange color-white">Резервацията е заявена</ngb-toast>
 </div>

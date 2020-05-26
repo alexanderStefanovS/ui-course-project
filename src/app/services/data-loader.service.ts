@@ -12,4 +12,12 @@ export class DataLoaderService {
   public getPlaces(): Observable<any> {
     return this.http.get('./assets/resources/places.json');
   }
+
+  public getReservations(): Observable<any> {
+    return this.http.get('./assets/resources/reservations.json');
+  }
+
+  public getUsers(): Observable<any> {
+    return this.http.get('./assets/resources/users.json');
+  }
 }

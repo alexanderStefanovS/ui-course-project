@@ -11,6 +11,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
+import { AddEventComponent } from './dialogs/add-event/add-event.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {HttpClientModule} from '@angular/common/http';
     UsersViewPanelComponent,
     AdministratorsViewPanelComponent,
     ManagersViewPanelComponent,
-    RegistrationViewPanelComponent
+    RegistrationViewPanelComponent,
+    AddEventComponent
   ],
   imports: [
     BrowserModule,

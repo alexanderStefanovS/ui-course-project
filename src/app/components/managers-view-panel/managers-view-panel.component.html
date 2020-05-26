@@ -8,9 +8,9 @@
         <div class="card-body p-3">
           <div class="form-group">
             <label for="desc">Описание</label>
-            <textarea [value]="place?.description" class="form-control" id="desc" rows="7"></textarea>
+            <textarea [value]="place?.description" class="form-control" id="desc" rows="4"></textarea>
           </div>
-          <form class="overflow-auto" style="height: calc(100% - 14rem)">
+          <form class="overflow-auto" style="height: calc(100% - 10rem)">
             <label class="d-block mb-0">Меню</label>
             <label class="mb-0 mt-2">Храни</label>
             <div *ngFor="let food of place?.menu.foods" class="form-row mt-1" style="width: 97%">
@@ -76,12 +76,34 @@
             </div>
           </form>
         </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-end">
+            <button class="btn b-color-orange color-white">Запази промените</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-lg-4">
       <div class="card c1-height">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between">
           <h4 class="color-orange">Събития</h4>
+          <button class="btn btn-outline-success btn-sm" ngbTooltip="Добави събитие" style="width: 40px" (click)="openAddEventModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" width="12" height="16">
+              <path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="card-body overflow-auto" style="height: 80%">
+          <ul class="list-group">
+            <li *ngFor="let event of place?.events" class="list-group-item d-flex justify-content-between">
+              {{event.name}} {{event.date}}
+              <button class="btn btn-sm btn-outline-danger" ngbTooltip="Премахни събитието" placement="top-right" (click)="removeEvent(event.name)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" width="12" height="16">
+                  <path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"></path>
+                </svg>
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -90,7 +112,30 @@
         <div class="card-header">
           <h4 class="color-orange">Заявки за резервация</h4>
         </div>
+        <div class="card-body overflow-auto">
+          <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+            <ngb-panel *ngFor="let reservation of reservations; let i = index">
+              <ng-template ngbPanelTitle>
+                <span>{{reservation.name}}</span>
+              </ng-template>
+              <ng-template ngbPanelContent>
+                <p>Име: {{reservation.name}}</p>
+                <p>Телефон: {{reservation.phone}}</p>
+                <p>Дата: {{reservation.date}}</p>
+                <p>Час: {{reservation.hour}}</p>
+                <div class="d-flex justify-content-end">
+                  <button class="btn btn-outline-success" (click)="acceptReservation(reservation.phone)">Одобри</button>
+                  <button class="btn btn-outline-danger ml-2" (click)="declineReservation(reservation.phone)">Отхвърли</button>
+                </div>
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<div *ngIf="isVisibleToast" class="d-flex justify-content-center">
+  <ngb-toast [delay]="2500" (hide)="isVisibleToast = false" class="b-color-orange color-white">{{toastMessage}}</ngb-toast>
+</div>
+<app-add-event #addEvent (saveEvent)="saveEvent($event)"></app-add-event>

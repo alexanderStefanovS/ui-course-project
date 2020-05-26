@@ -13,6 +13,7 @@ export class UsersViewPanelComponent implements OnInit {
   public time;
   public date: NgbDate;
   public isFoodCollapsed = true;
+  public isVisibleToast = false;
   public isDrinkCollapsed = true;
   public selectedPlace: PlaceModel;
   public places: PlaceModel[];
@@ -96,5 +97,9 @@ export class UsersViewPanelComponent implements OnInit {
       return (place.name.toLowerCase().indexOf(searchValue.toLowerCase()) > -1);
     });
     this.selectedPlace = this.selectedPlaces[0];
+  }
+
+  reserve() {
+    this.isVisibleToast = true;
   }
 }

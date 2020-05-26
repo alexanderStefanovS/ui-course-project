@@ -10,6 +10,7 @@ export class RegistrationViewPanelComponent implements OnInit {
 
   public roles = ['Потребител', 'Мениджър на заведение'];
   public form: FormGroup;
+  public isVisibleToast = false;
 
   constructor(
     private formBuilder: FormBuilder
@@ -34,9 +35,7 @@ export class RegistrationViewPanelComponent implements OnInit {
   }
 
   onClickRegister() {
-    if (this.form.valid) {
-      console.log(this.form);
-    }
+    this.isVisibleToast = true;
   }
 
 }

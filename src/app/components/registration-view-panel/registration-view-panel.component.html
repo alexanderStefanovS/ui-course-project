@@ -51,3 +51,6 @@
     <button class="btn my-3 b-color-orange color-white" [disabled]="!form.valid" (click)="onClickRegister()">Регистрирай се</button>
   </form>
 </div>
+<div *ngIf="isVisibleToast" class="d-flex justify-content-center">
+  <ngb-toast [delay]="2500" (hide)="isVisibleToast = false" class="b-color-orange color-white">Регистрацията е успешна</ngb-toast>
+</div>
