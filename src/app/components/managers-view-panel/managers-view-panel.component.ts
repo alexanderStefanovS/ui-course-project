@@ -99,4 +99,9 @@ export class ManagersViewPanelComponent implements OnInit {
     this.isVisibleToast = true;
     this.toastMessage = this.RESERVATION_DECLINED;
   }
+
+  saveChanges() {
+    this.isVisibleToast = true;
+    this.toastMessage = this.CHANGES_SAVED;
+  }
 }
