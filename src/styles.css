@@ -28,15 +28,15 @@ textarea {
 }
 
 .c1-height {
-  height: 38rem;
+  height: 35rem;
 }
 
 @media screen and (min-width: 990px) {
   .c2-height {
-    height: 19.5rem;
+    height: 16.5rem;
   }
   .c4-height {
-    height: 24rem;
+    height: 18rem;
   }
   .c3-height {
     height: 15rem;
